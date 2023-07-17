@@ -46,7 +46,8 @@
 .showcase button div {
     position: absolute;
     border-width: 0;
-    width: 230px;
+    min-width: min-content;
+    width: 200px;
     background-color: rgb(255 255 255);
     background-image: none;
     box-shadow: rgba(95 95 95 / 50%) 0 0 5px 0;
