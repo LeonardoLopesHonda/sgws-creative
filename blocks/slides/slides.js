@@ -65,7 +65,7 @@ export default async function decorate(block) {
   block.setAttribute('aria-label', 'Slides');
 
   const isProgram = block.classList.contains('program');
-  [...block.children].forEach(async (slide, index) => {
+  [...block.children].forEach((slide, index) => {
     slide.className = 'slide';
     block.setAttribute('role', 'group');
     block.setAttribute('aria-roledescription', 'Slide');
@@ -78,7 +78,7 @@ export default async function decorate(block) {
       const slideContent = slide.querySelector('a');
       const slideContentPath = slideContent.getAttribute('href');
       slideContent.closest('div').remove();
-      await buildProgramFragmentSlide(slide, slideContentPath);
+      buildProgramFragmentSlide(slide, slideContentPath);
     } else {
       // "Standard slide": create avatar container and set up 'pairs with' view if available
       const avatar = createTag('div', { class: 'avatar' });
@@ -103,6 +103,9 @@ export default async function decorate(block) {
               <span class="icon icon-pairs-glass"></span>
           </button>`;
           mainHeader.parentNode.insertBefore(toggle, mainHeader.nextElementSibling);
+          mainHeader.parentNode.classList.add('animate');
+
+          animationObserver.observe(toggle.querySelector('button'));
 
           const pairedButton = toggle.querySelector('button');
           pairedButton.addEventListener('click', () => {
@@ -112,10 +115,10 @@ export default async function decorate(block) {
         }
 
         const pairsWith = createTag('div', {
-          class: 'pairs-with animate',
+          class: 'pairs-with',
           role: 'group',
         });
-        const pairsImages = createTag('div', { class: 'pairs-with-meal animate' });
+        const pairsImages = createTag('div', { class: 'pairs-with-meal' });
 
         const meal = slide.querySelector('picture:last-child');
         pairsImages.append(meal);
@@ -123,7 +126,7 @@ export default async function decorate(block) {
         pairsImages.append(bottle);
         pairsWith.append(pairsImages);
 
-        const pairsText = createTag('div', { class: 'pairs-with-text animate' });
+        const pairsText = createTag('div', { class: 'pairs-with-text' });
         const header1 = createTag('h3', { class: 'animate' });
         header1.innerText = 'A PERFECT PAIRING:';
         headers[1].innerText = `${headers[0].innerText} + ${headers[1].innerText}`;
@@ -144,7 +147,6 @@ export default async function decorate(block) {
           slide.classList.toggle('show-pairing');
         }, { passive: true });
         pairsWith.append(closePairsView);
-
         slide.append(pairsWith);
       }
     }
@@ -154,7 +156,7 @@ export default async function decorate(block) {
     if (links.length === 0) return;
     const link = links[links.length - 1];
     const path = link ? link.getAttribute('href') : slide.textContent.trim();
-    await buildStatsFragmentSlide(slide, path, link);
+    buildStatsFragmentSlide(slide, path, link);
   });
 
   decorateIcons(block);

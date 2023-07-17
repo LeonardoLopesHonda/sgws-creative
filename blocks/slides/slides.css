@@ -337,6 +337,11 @@
   animation-name: fade-in-right;
 }
 
+.slides .slide .toggle-pairs-with button.animate {
+  opacity: 1;
+  animation: fade-in-right-large 1s ease-out;
+}
+
 .slides .stats-group {
   width: 100%;
 }
