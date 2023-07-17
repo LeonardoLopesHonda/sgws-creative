@@ -170,6 +170,13 @@
   flex: unset;
 }
 
+.columns.image-overlay p.animate,
+.columns.image-overlay h2.animate {
+  opacity: 1;
+  animation-name: fade-in-right;
+  animation-duration: 2s;
+}
+
 .columns.image-overlay > div > div:last-child {
   display: flex;
   flex-direction: column;
