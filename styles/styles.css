@@ -275,6 +275,15 @@ a:any-link span.icon-arrow-small {
   animation-delay: 0.5s;
   animation-duration: 1s;
   animation-fill-mode: both;
+  animation-name: fade-in-bottom;
+}
+
+.product main .primary .default-content-wrapper .picture,
+.product main .images-border .default-content-wrapper .picture {
+  animation-delay: unset;
+  animation-duration: unset;
+  animation-fill-mode: unset;
+  animation-name: unset;
 }
 
 .product .default-content-wrapper p,

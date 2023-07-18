@@ -2,6 +2,10 @@
   min-height: 60vw;
 }
 
+.vertical-selector-container + .section {
+  padding-top: unset;
+}
+
 .vertical-selector .default-viewer video {
   width: 100%;
 }
@@ -39,6 +43,14 @@
   fill: var(--text-color-background);
 }
 
+.vertical-selector .fragment-viewer > div *,
+.vertical-selector .fragment-viewer > div {
+  animation-delay: unset;
+  animation-duration: unset;
+  animation-fill-mode: unset;
+  animation-name: unset;
+}
+
 .vertical-selector .fragment-viewer > *:not(.vs-active) {
   display: none;
 }
@@ -48,6 +60,7 @@
   padding-left: 15%;
   padding-right: 15%;
   text-align: center;
+  text-transform: uppercase;
 }
 
 .vertical-selector .fragment-viewer *.vs-active {
@@ -70,9 +83,11 @@
   width:100%;
 }
 
+.vertical-selector .fragment-viewer video,
 .vertical-selector .fragment-viewer .vs-bkg picture img {
   width: 100%;
   max-height:45vw;
+  object-fit: cover;
 }
 
 .vertical-selector .fragment-viewer .video-group {
@@ -116,6 +131,10 @@
   padding: var(--layout-size-s) var(--layout-size-l);
   position: relative;
   z-index: 25;
+}
+
+.vertical-selector.inverted-color .fragment-selector > div {
+  background-color: var(--primary-color);
 }
 
 .vertical-selector .fragment-selector > div div.animate {

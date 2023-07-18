@@ -4,7 +4,7 @@ import { createOptimizedPicture } from '../../scripts/lib-franklin.js';
 const VIDEO_IMAGE_DEFAULT_WIDTH = 750;
 const VIDEO_IMAGE_DEFAULT_HEIGHT = 422;
 
-function observeVideo(block, rootMargin) {
+function observeVideo(block, rootMargin, newImagePicture) {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       const videoElement = entry.target.querySelector('video');
@@ -12,7 +12,11 @@ function observeVideo(block, rootMargin) {
         if (!videoElement.autoplay) videoElement.toggleAttribute('autoplay', true);
         if (!videoElement.loop) videoElement.toggleAttribute('loop', true);
         if (!videoElement.playsinline) videoElement.toggleAttribute('playsinline', true);
-        videoElement.play();
+        try {
+          videoElement.play();
+        } catch {
+          newImagePicture.classList.add('hidden');
+        }
       } else {
         videoElement.pause();
       }
@@ -60,10 +64,10 @@ export default function decorate(block) {
     newImagePicture.classList.add('hidden');
   }, { passive: true });
   if (!block.closest('.section').classList.contains('background-video')) {
-    observeVideo(block, '0px');
+    observeVideo(block, '0px', newImagePicture);
   } else {
     videoElement.addEventListener('loadedmetadata', () => {
-      observeVideo(block, `${videoElement.videoHeight}px`);
+      observeVideo(block, `${videoElement.videoHeight}px`, newImagePicture);
     }, { passive: true });
   }
 }

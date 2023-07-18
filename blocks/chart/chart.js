@@ -120,7 +120,7 @@ function getInteractivitySettings() {
 function buildChartRepresentation(chartConfig, theme) {
   const chartDescription = {};
   chartDescription.title = {
-    text: chartConfig.title,
+    text: chartConfig.title || '',
     textStyle: {
       color: theme[THEME_TOKEN.PRIMARY_COLOR],
       fontWeight: theme['font-weight'],
@@ -829,6 +829,7 @@ export default function decorate(block) {
   window.addEventListener('drawChart', () => {
     if (echartsLoaded) {
       computeFontSizes(block, theme);
+      chartHolder.remove();
       chartHolder = document.createElement('div');
       block.append(chartHolder);
       drawChart(block, data, cfg, chartHolder, theme);

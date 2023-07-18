@@ -95,7 +95,7 @@ function handleSelectorClick(scope, index) {
 }
 
 export default async function decorate(block) {
-  const fragmentViewer = createTag('div', { class: 'fragment-viewer', 'aria-label': 'Fragment View' });
+  const fragmentViewer = createTag('div', { class: 'fragment-viewer' });
   const fragmentSelectors = createTag('div', { class: 'fragment-selector', 'aria-label': 'Fragment View Selectors' });
 
   [...block.children].forEach((row, rowIndex) => {

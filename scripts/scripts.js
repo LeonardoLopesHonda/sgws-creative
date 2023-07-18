@@ -367,18 +367,17 @@ export function decorateBannerSections(main) {
           wrapper.removeChild(p);
         }
       });
-
       // Wrap headings in a div for better alignment in row.
       [...wrapper.querySelectorAll('h3')].forEach((heading) => {
         const textDiv = createTag('div', {});
         textDiv.append(heading);
         wrapper.append(textDiv);
       });
-
       wrapper.addEventListener('click', (e) => {
         e.stopPropagation();
         window.open(bannerLink, '_columnsLink');
       });
+      animationObserver.observe(wrapper);
     });
   }
 }
