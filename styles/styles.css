@@ -341,6 +341,34 @@ main .section.highlight:not(.background-image) {
   color: var(--text-color-background);
 }
 
+main .section.opacity-half p.picture {
+  opacity: 0.5;
+}
+
+main .section.opacity-quarter p.picture {
+  opacity: 0.25;
+}
+
+main .section.no-vertical-padding {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+main .section.no-padding,
+main .section.no-padding p.picture {
+  padding: 0;
+  margin: 0;
+}
+
+main .section.no-padding picture {
+  height: fit-content;
+  display: flex;
+}
+
+main .section.no-padding picture img {
+  width: 100%;
+}
+
 main div.section.banner > div p,
 main div.section.banner > div h3 {
   margin: 0;
