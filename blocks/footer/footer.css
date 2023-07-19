@@ -17,6 +17,10 @@ footer {
   padding : 0;
 }
 
+.product footer .footer.neutral {
+  background-color: var(--neutral-color);
+}
+
 .product footer img {
   position: relative;
   bottom: -0.75em;
@@ -325,6 +329,16 @@ footer .sources ol > li::marker {
 
 .product .footer > div > div:first-child {
   overflow: hidden;
+}
+
+.product footer .footer.neutral .product-footer-nav > div {
+  border: var(--layout-size-xxs) solid var(--neutral-color);
+}
+
+.product footer .footer.neutral .product-footer-nav > div p,
+.product footer .footer.neutral .product-footer-nav > div svg {
+  color: var(--neutral-color);
+  fill: var(--neutral-color);
 }
 
 @media (prefers-reduced-motion: no-preference) {

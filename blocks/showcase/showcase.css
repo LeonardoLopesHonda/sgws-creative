@@ -28,14 +28,22 @@
     line-height: inherit;
 }
 
+.showcase.primary button {
+    color: var(--primary-color);
+} 
+
 .showcase button span.icon {
     width: 55%;
     height: auto;
     max-width: 50px;
     max-height: 50px;
-    min-height: 40px;
-    min-width: 40px;
     color: var(--secondary-color);
+    min-height: 3vw;
+    min-width: 3vw;
+}
+
+.showcase.neutral button span.icon {
+    color: var(--neutral-color);
 }
 
 .showcase button span.icon svg {
@@ -70,6 +78,10 @@
 .showcase button h2 {
     margin-top: 8px;
     text-transform: uppercase;
+}
+
+.showcase.neutral button h2 {
+    color: var(--neutral-color);
 }
 
 /* Popover when 'hover' is activated. */

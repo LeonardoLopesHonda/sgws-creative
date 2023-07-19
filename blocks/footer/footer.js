@@ -60,6 +60,7 @@ export default async function decorate(block) {
   if (mainFooterSection && !cfg.footer) {
     // move footer content
     const mainFooter = mainFooterSection.querySelector('.block.footer');
+    block.classList.add(...mainFooter.classList);
     block.append(...mainFooter.childNodes);
     mainFooterSection.remove();
   } else {

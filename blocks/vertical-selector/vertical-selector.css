@@ -73,14 +73,14 @@
 }
 
 .vertical-selector .fragment-viewer .vs-bkg {
-  display:block;
+  display: block;
   position: relative;
-  z-index:-1;
+  z-index: -1;
 }
 
 .vertical-selector .fragment-viewer .vs-bkg picture {
   position: absolute;
-  width:100%;
+  width: 100%;
 }
 
 .vertical-selector .fragment-viewer video,
@@ -133,6 +133,10 @@
   z-index: 25;
 }
 
+.vs-active.wood-table > div > div {
+  min-height: 45vw;
+}
+
 .vertical-selector.inverted-color .fragment-selector > div {
   background-color: var(--primary-color);
 }
@@ -168,3 +172,62 @@
   transform-origin: center center;
 }
 
+.vs-active.wood-table::after {
+  content: " ";
+  display: block;
+  width: 100%;
+  margin-top: calc(-9vw);
+  height: 10vw;
+  background: url("/styles/wood-table-top.avif");
+  background-size: cover;
+}
+
+.vs-active.wood-table .animateimage.tab2 > div {
+  display: flex;
+  flex-direction: row;
+  width: auto;
+  position: relative;
+}
+
+.vs-active.wood-table .animateimage.tab2 .picture {
+  position: absolute;
+  left: 40vw;
+  top: 14vw;
+}
+
+.vs-active.wood-table .animateimage.tab2 .picture img {
+  width: 90%;
+}
+
+.vs-active.wood-table .animateimage.tab2 h2,
+.vs-active.wood-table .animateimage.tab2 p {
+  padding-left: 20vw;
+  padding-right: 42vw;
+  text-align: left;
+}
+
+.vs-active.wood-table .animateimage.tab2 h2:first-of-type {
+  padding-top: 10vw;
+}
+
+.vs-active.wood-table .animateimage.tab2 h2:last-of-type {
+  color: var(--neutral-color);
+}
+
+.vs-active.wood-table .animateimage.tab2 p {
+  font-size: var(--heading-font-size-s);
+}
+
+.vs-active .icon-list p.animate:first-of-type {
+  animation-name: fade-in-top;
+  animation-duration: 0.5s;
+}
+
+.vs-active .icon-list p.animate:last-of-type {
+  animation-name: fade-in-bottom;
+  animation-duration: 0.5s;
+}
+
+.vs-active .icon-list  {
+  margin-top: 200px;
+}
