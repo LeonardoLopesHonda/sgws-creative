@@ -17,8 +17,6 @@ function observeVideo(block, rootMargin, newImagePicture) {
         } catch {
           newImagePicture.classList.add('hidden');
         }
-      } else {
-        videoElement.pause();
       }
     });
   }, {

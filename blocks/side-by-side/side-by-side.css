@@ -1,0 +1,25 @@
+.side-by-side.block {
+  display: grid;
+}
+
+.side-by-side.block h4 {
+  text-align: center;
+  text-transform: capitalize;
+  margin-top: 3.25em;
+  margin-bottom: 0;
+}
+
+.side-by-side.block .chart-container {
+  padding: unset;
+  height: 400px;
+  margin-bottom: 1em;
+  padding-top: 0.5em;
+}
+
+.side-by-side.block .element-left-border {
+  border-left: 1px solid var(--primary-color);
+}
+
+.side-by-side.block .compared-element-padding {
+  padding-left: 1vw !important;
+}

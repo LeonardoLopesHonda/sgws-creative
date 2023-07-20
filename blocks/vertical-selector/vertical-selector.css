@@ -91,9 +91,11 @@
 }
 
 .vertical-selector .fragment-viewer .video-group {
+  position: relative;
   display: flex;
   padding: 0;
   margin: 0;
+  min-height: 45vw;
 }
 
 .vertical-selector .close-viewer span.icon-close svg > * {

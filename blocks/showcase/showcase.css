@@ -30,7 +30,7 @@
 
 .showcase.primary button {
     color: var(--primary-color);
-} 
+}
 
 .showcase button span.icon {
     width: 55%;
@@ -44,6 +44,10 @@
 
 .showcase.neutral button span.icon {
     color: var(--neutral-color);
+}
+
+.showcase.inverted-colors button span.icon {
+  color: var(--primary-color);
 }
 
 .showcase button span.icon svg {

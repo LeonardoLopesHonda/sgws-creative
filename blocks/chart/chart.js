@@ -2,7 +2,7 @@ import { readPredefinedBlockConfig } from '../../scripts/lib-franklin.js';
 import { getTheme, THEME_TOKEN } from '../../scripts/scripts.js';
 
 const MIN_CHART_HEIGHT_INT = 400;
-const MIN_CHART_HEIGHT = `${MIN_CHART_HEIGHT_INT}ps`;
+const MIN_CHART_HEIGHT = `${MIN_CHART_HEIGHT_INT}px`;
 
 /**
  * Prepare data to be displayed in a bar chart
@@ -495,8 +495,7 @@ function drawHistogramChart(chartData, chartConfig, chartHolder, theme) {
 function drawComparisonBarChart(chartData, chartConfig, chartHolder, theme) {
   const formattedData = prepareChartData(chartData);
 
-  // chart stylings
-  // for comparison chart we have only two values, so...
+  // chart stylings: for comparison chart we have only two values
   formattedData.dataValues[0].itemStyle = {
     color: getLinearColorGradient(theme[THEME_TOKEN.PRIMARY_COLOR], theme['primary-gradient-color']),
   };
@@ -521,7 +520,9 @@ function drawComparisonBarChart(chartData, chartConfig, chartHolder, theme) {
   // build comparison bar chart specific representation
   const barChartSpecificDescription = {
     title: {
+      text: chartConfig.title,
       textStyle: titleTextStyle,
+      left: 'center',
     },
     xAxis: {
       data: formattedData.barNames,
@@ -543,7 +544,7 @@ function drawComparisonBarChart(chartData, chartConfig, chartHolder, theme) {
       axisLabel: {
         formatter: `${chartConfig.unit || ''}{value}${chartConfig['value-suffix'] || ''}`,
         align: 'center',
-        margin: '22',
+        margin: '18',
         ...axisFontStyle,
       },
     },
@@ -564,6 +565,9 @@ function drawComparisonBarChart(chartData, chartConfig, chartHolder, theme) {
     },
     ],
   };
+  // smaller yAxis fonts for comparisons
+  const yFontSize = `${parseInt(axisFontStyle.fontSize, 10) * 0.8}px`;
+  barChartSpecificDescription.yAxis.axisLabel.fontSize = yFontSize;
 
   const barChart = initializeChart(chartHolder, chartConfig);
   barChart.setOption({
@@ -702,8 +706,9 @@ function drawComparisonPieChart(chartData, chartConfig, chartHolder, theme) {
  */
 function drawChart(block, chartData, chartConfig, chartHolder, theme) {
   const blockClassList = block.classList;
-  chartConfig.chartWidth = block.clientWidth;
+  chartConfig.chartWidth = block.clientWidth * 0.9;
   chartConfig.chartHeight = MIN_CHART_HEIGHT;
+
   let elem = block;
   for (let i = 0; i < 4; i += 1) {
     if (elem.clientHeight > 0) {

@@ -1,3 +1,7 @@
+.video.block {
+  position: relative;
+}
+
 .video.block .video-content {
   display: flex;
   width: auto;
@@ -12,6 +16,14 @@
 
 .video.block .hidden {
   display: none;
+}
+
+.video.block > picture {
+  position: absolute;
+  width: 50%;
+  top: 25%;
+  left: 25%;
+  z-index: -1;
 }
 
 /* video styling for background video in section */
