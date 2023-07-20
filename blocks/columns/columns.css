@@ -160,7 +160,11 @@
 
 .columns.stats.wide > div > div {
   background-color: transparent;
-  background-image: linear-gradient(0deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  background-image: linear-gradient(
+    0deg,
+    var(--primary-color) 0%,
+    var(--secondary-color) 100%
+  );
   padding: 3rem 3rem 1rem;
 }
 
@@ -248,7 +252,11 @@
   margin: var(--layout-size-xxl) 15vw;
   text-align: center;
   background-color: transparent;
-  background-image: linear-gradient(180deg, var(--primary-color) 0%, var(--secondary-color) 250%);
+  background-image: linear-gradient(
+    180deg,
+    var(--primary-color) 0%,
+    var(--secondary-color) 250%
+  );
 }
 
 .product .columns.stats > div p {
@@ -260,8 +268,8 @@
   color: var(--text-secondary-color-background);
 }
 
-.columns.icon-list.neutral p:last-child {
-  color: var(--neutral-color);
+.columns.icon-list.primary p:last-child {
+  color: var(--primary-color);
 }
 
 .columns-wrapper.help-open .nav-help img {
@@ -279,8 +287,8 @@
   background-color: var(--header-background-color);
 }
 
-.columns.icon-list.neutral > div > div:not(:last-child) {
-  border-right: 1px solid var(--neutral-color);
+.columns.icon-list.primary > div > div:not(:last-child) {
+  border-right: 1px solid var(--primary-color);
 }
 
 .product-stats-footer {
@@ -449,7 +457,7 @@
 }
 
 .columns.heading div.has-help p:first-child {
-  width: calc(100% - 100px)
+  width: calc(100% - 100px);
 }
 
 .columns.heading div.has-help p:last-child {
@@ -462,7 +470,7 @@
   margin-top: var(--layout-size-m);
   animation-name: small-rotation;
   animation-duration: 10000ms;
-  animation-iteration-count: infinite,infinite;
+  animation-iteration-count: infinite, infinite;
 }
 
 .columns-wrapper.help-open {

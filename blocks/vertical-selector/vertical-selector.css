@@ -86,7 +86,7 @@
 .vertical-selector .fragment-viewer video,
 .vertical-selector .fragment-viewer .vs-bkg picture img {
   width: 100%;
-  max-height:45vw;
+  max-height: 45vw;
   object-fit: cover;
 }
 
@@ -98,9 +98,19 @@
   min-height: 45vw;
 }
 
+.vertical-selector.neutral .fragment-selector svg > * {
+  color: var(--static-color-white);
+  fill: var(--static-color-white);
+}
+
 .vertical-selector .close-viewer span.icon-close svg > * {
   fill: var(--static-color-black);
   color: var(--static-color-black);
+}
+
+.vertical-selector.neutral .close-viewer span.icon-close svg > * {
+  fill: var(--neutral-color);
+  color: var(--neutral-color);
 }
 
 .vertical-selector .close-viewer span.icon-close:not(.vs-active) {
@@ -139,6 +149,11 @@
   min-height: 45vw;
 }
 
+.vertical-selector.neutral .fragment-selector > div {
+  background-color: var(--neutral-color);
+  border-bottom: 1px solid var(--static-color-white);
+}
+
 .vertical-selector.inverted-color .fragment-selector > div {
   background-color: var(--primary-color);
 }
@@ -151,6 +166,14 @@
   color: var(--text-color-background);
   text-transform: uppercase;
   margin: 0 var(--layout-size-m) 0 0;
+}
+
+.vs-active .icon-list p {
+  opacity: 1;
+}
+
+.vertical-selector.neutral .fragment-selector p {
+  color: var(--static-color-white);
 }
 
 .vertical-selector .fragment-selector > div .icon {
@@ -210,9 +233,6 @@
 
 .vs-active.wood-table .animateimage.tab2 h2:first-of-type {
   padding-top: 10vw;
-}
-
-.vs-active.wood-table .animateimage.tab2 h2:last-of-type {
   color: var(--neutral-color);
 }
 
@@ -222,14 +242,14 @@
 
 .vs-active .icon-list p.animate:first-of-type {
   animation-name: fade-in-top;
-  animation-duration: 0.5s;
+  animation-duration: 1s;
 }
 
 .vs-active .icon-list p.animate:last-of-type {
   animation-name: fade-in-bottom;
-  animation-duration: 0.5s;
+  animation-duration: 1s;
 }
 
-.vs-active .icon-list  {
+.vs-active .icon-list {
   margin-top: 200px;
 }

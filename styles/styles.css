@@ -459,6 +459,10 @@ main .section.background-video .default-content-wrapper {
   padding-bottom: 12.5%;
 }
 
+main div.section.images-border > div p.full-width img {
+  width: 100%;
+}
+
 main .section.background-video .default-content-wrapper > p.picture:first-child > picture > img {
   width: calc(25vw);
   margin-bottom: 7.5vw;
@@ -593,11 +597,11 @@ main div.images-border {
   padding: 24px 0 0;
   text-align: center;
   font-size: larger;
+  margin-bottom: 6vw;
 }
 
 main div.section.images-border > div p {
   position: absolute;
-  width: 60vw;
   margin: 0;
   transform: translateY(-80%);
 }
