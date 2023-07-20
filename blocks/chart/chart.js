@@ -587,6 +587,8 @@ function drawComparisonPieChart(chartData, chartConfig, chartHolder, theme) {
   const formattedData = prepareChartData(chartData);
 
   // format data for representation
+  formattedData.dataValues[0].value = parseInt(formattedData.dataValues[0].value, 10);
+  formattedData.dataValues[1].value = parseInt(formattedData.dataValues[1].value, 10);
   const firstSeries = [
     {
       value: formattedData.dataValues[0].value,
@@ -599,14 +601,16 @@ function drawComparisonPieChart(chartData, chartConfig, chartHolder, theme) {
           r: 0.70,
           colorStops: getGradientStops(theme['primary-gradient-color'], theme[THEME_TOKEN.PRIMARY_COLOR]),
         },
+        shadowColor: theme['primary-gradient-color'],
+        shadowBlur: '10'
       },
     },
     {
-      value: 100 - parseInt(formattedData.dataValues[0].value, 10),
+      value: 100 - formattedData.dataValues[0].value,
       name: formattedData.dataValues[0].value,
       itemStyle: {
         color: theme[THEME_TOKEN.PRIMARY_COLOR],
-        opacity: 0.8,
+        opacity: 0.5,
       },
     },
   ];
@@ -622,14 +626,16 @@ function drawComparisonPieChart(chartData, chartConfig, chartHolder, theme) {
           r: 0.75,
           colorStops: getGradientStops(theme['neutral-gradient-color'], theme[THEME_TOKEN.NEUTRAL_COLOR]),
         },
+        shadowColor: theme['neutral-gradient-color'],
+        shadowBlur: '10'
       },
     },
     {
-      value: 100 - parseInt(formattedData.dataValues[1].value, 10),
+      value: 100 - formattedData.dataValues[1].value,
       name: formattedData.dataValues[1].value,
       itemStyle: {
         color: theme[THEME_TOKEN.NEUTRAL_COLOR],
-        opacity: 0.8,
+        opacity: 0.5,
       },
     },
   ];
@@ -640,7 +646,6 @@ function drawComparisonPieChart(chartData, chartConfig, chartHolder, theme) {
     position: 'center',
     fontWeight: theme['font-weight'],
     color: theme['font-color'],
-    formatter: `{@value}${chartConfig['value-suffix']}`,
   };
   const pieInteractivitySettings = {
     percentPrecision: 1,
@@ -667,6 +672,7 @@ function drawComparisonPieChart(chartData, chartConfig, chartHolder, theme) {
         colorBy: 'data',
         label: {
           fontSize: `${theme['computed-font-size-px'] * 3}`,
+          formatter: `${formattedData.dataValues[0].value}${chartConfig['value-suffix']}`,
           ...labelStylings,
         },
         data: firstSeries,
@@ -681,6 +687,7 @@ function drawComparisonPieChart(chartData, chartConfig, chartHolder, theme) {
         colorBy: 'data',
         label: {
           fontSize: `${theme['computed-font-size-px'] * 2.33}`,
+          formatter: `${formattedData.dataValues[1].value}${chartConfig['value-suffix']}`,
           ...labelStylings,
         },
         data: secondSeries,
