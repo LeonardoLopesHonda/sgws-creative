@@ -345,6 +345,16 @@ main .section.highlight:not(.background-image) {
   color: var(--text-color-background);
 }
 
+main div.people-intro p:not(.picture) {
+  animation: fade-in-left 0.5s ease-out;
+  font-size: clamp(var(--body-font-size-min) * 0.7, 0.504vw + 0.376rem, var(--body-font-size-max));
+}
+
+main div.people-intro p.picture {
+  text-align: end;
+  display: none;
+}
+
 main .section.opacity-half p.picture {
   opacity: 0.5;
 }
@@ -606,6 +616,10 @@ main div.section.images-border > div p {
   transform: translateY(-80%);
 }
 
+main div.people-intro div.row1-text p {
+  text-align: left;
+}
+
 main div.section.images-border > div p:not(:last-child) {
   left: 0;
 }
@@ -621,6 +635,100 @@ main div.section.images-border > div p.full-width {
 
 main div.section.images-border.neutral > div h2 {
   color: var(--neutral-color);
+}
+
+/* Not .people so that something shows up if viewing it directly (not as a fragment). */
+main div.section:not(.people) .div.people-background-image {
+  position: relative;
+}
+
+main div.section:not(.people) div.people-background-image > * {
+  position: absolute;
+}
+
+main div.people-intro {
+  display: grid;
+  grid-template-columns: 40% 40%;
+  column-gap: var(--layout-size-xs);
+  row-gap: 0;
+  padding: var(--layout-size-m) var(--layout-size-s);
+  margin: 0 1vw 0 0;
+}
+
+main div.people-intro .row1-text {
+  grid-column: 1 / 3;
+  grid-row: 1;
+}
+
+@media (min-width: 900px) {
+  main div.people-intro {
+    grid-template-columns: 17% 28% 17% 28%;
+    padding: var(--layout-size-l) var(--layout-size-xxl);
+    column-gap: var(--layout-size-l);
+  }
+
+  main div.people-intro p:not(.picture) {
+    font-size: clamp(var(--body-font-size-min), 0.604vw + 0.386rem, var(--body-font-size-max));
+  }
+
+  main div.people-intro p.picture {
+    display: block;
+  }
+
+  main div.people-intro .row1-text {
+    grid-column: 2 / 5;
+  }
+}
+
+main div.people-intro .row1-text > div {
+  border-bottom: 1px solid var(--primary-color);
+  max-height: max(6vw, 55px);
+  display: flex;
+  gap: min(1vw, 16px);
+}
+
+/* Header */
+main div.people-intro .row1-text div :first-child {
+  font-style: italic;
+  padding-left: 0;
+  padding-right: 0;
+  text-align: unset;
+  text-transform: uppercase;
+}
+
+main div.people-intro .row1-text div :first-child::after {
+  border-bottom: none !important;
+}
+
+main div.people-intro div.row1-text div :last-child {
+  color: var(--primary-color);
+  padding: max(1.5vw, 12px) 0 var(--layout-size-l);
+  text-align: unset;
+  text-transform: uppercase;
+}
+
+/* Sub Titles (names, titles) */
+main div.people-intro div.row2-text p:first-child {
+  color: var(--primary-color);
+  margin-top: var(--layout-size-m);
+  margin-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  text-align: unset;
+}
+
+main div.people-intro div.row2-text p:nth-child(2) {
+  color: var(--primary-color);
+  margin-top: 0;
+  padding-left: 0;
+  padding-right: 0;
+  text-align: unset;
+}
+
+main div.people-intro div.row2-text p:last-child {
+  padding-left: 0;
+  padding-right: 0;
+  text-align: unset;
 }
 
 /* animations */

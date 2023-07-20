@@ -403,6 +403,47 @@ export function decorateSectionBackgrounds(main) {
 }
 
 /**
+ * Decorates people introduction block.
+ * @param {Element} main The container element
+ */
+export function decoratePeople(main) {
+  main.querySelectorAll('.section.people').forEach((section) => {
+    const grid = section.querySelector('div.default-content-wrapper');
+    const peopleFragment = createTag('div', { class: 'people-intro' });
+    const row1Text = createTag('div', { class: 'row1-text' });
+    const row2Text1 = createTag('div', { class: 'row2-text' });
+    const row2Text2 = createTag('div', { class: 'row2-text' });
+
+    const elements = [...section.querySelectorAll('h1, h2, h3, p')];
+    if (elements.length >= 12) {
+      const row1Header = createTag('div', {});
+      row1Header.append(elements[1]);
+      row1Header.append(elements[2]);
+      row1Text.append(row1Header, elements[3]);
+
+      row2Text1.append(elements[5]);
+      row2Text1.append(elements[6]);
+      row2Text1.append(elements[7]);
+
+      row2Text2.append(elements[9]);
+      row2Text2.append(elements[10]);
+      row2Text2.append(elements[11]);
+
+      peopleFragment.append(elements[0], row1Text, elements[4], row2Text1, elements[8], row2Text2);
+
+      const backgroundImage = section.querySelector('picture');
+      if (backgroundImage) {
+        // Background tweaked to work as a fragment, not as a stand-alone block.
+        grid.classList.add('people-background-image');
+        grid.append(backgroundImage, peopleFragment);
+      } else {
+        grid.append(peopleFragment);
+      }
+    }
+  });
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -417,6 +458,7 @@ function decorateMain(main) {
   decorateBlocks(main);
   decorateSectionBackgrounds(main);
   decorateBorders(main);
+  decoratePeople(main);
 
   // observe animations
   main.querySelectorAll('h1, h2, h3, p:not(.border)').forEach((element) => {

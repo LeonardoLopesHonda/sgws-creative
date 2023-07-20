@@ -84,12 +84,20 @@ function handleSelectorClick(scope, index) {
     closeButton.classList.remove('vs-active');
   } else {
     const showViewer = viewer.querySelector(`div.fragment-viewer-${index}`);
-    showViewer.classList.add('vs-active');
-    closeButton.classList.add('vs-active');
-    window.dispatchEvent(new Event('drawChart'));
-    const vertSelector = scope.querySelector('.vertical-selector');
-    if (vertSelector) {
-      vertSelector.scrollIntoView(true);
+    if (!showViewer) {
+      // If this selector does not have a view loaded, reset to the original image (index 0).
+      handleSelectorClick(scope, 0);
+    } else {
+      showViewer.classList.add('vs-active');
+      closeButton.classList.add('vs-active');
+      window.dispatchEvent(new Event('drawChart'));
+
+      // Scroll the small 'close' button into view instead of the selector (since if it was just
+      // clicked, it is visible).
+      const closeViewer = scope.querySelector('.close-viewer');
+      if (closeViewer) {
+        closeViewer.scrollIntoView(true);
+      }
     }
   }
 }
@@ -139,12 +147,15 @@ export default async function decorate(block) {
             const fragmentSection = fragment.querySelector(':scope .section');
             fragmentSection.classList.add(`fragment-viewer-${rowIndex}`);
 
-            const viewerHeader = createTag('h2', {});
-            viewerHeader.innerHTML = columns[0].innerHTML;
-
-            // setupCharting(block);
             const nextViewer = createTag('div', { class: `fragment-viewer-${rowIndex} animate` });
-            nextViewer.append(viewerHeader);
+
+            // Do not carry the title to the top of the viewed content, if specified.
+            if (!block.classList.contains('no-title')) {
+              const viewerHeader = createTag('h2', {});
+              viewerHeader.innerHTML = columns[0].innerHTML;
+              nextViewer.append(viewerHeader);
+            }
+
             // If the fragment has a wood table style apply it to the viewer
             if (fragmentSection.querySelector('.wood-table')) {
               nextViewer.classList.add('wood-table');
