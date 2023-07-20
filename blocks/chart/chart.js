@@ -601,8 +601,6 @@ function drawComparisonPieChart(chartData, chartConfig, chartHolder, theme) {
           r: 0.70,
           colorStops: getGradientStops(theme['primary-gradient-color'], theme[THEME_TOKEN.PRIMARY_COLOR]),
         },
-        shadowColor: theme['primary-gradient-color'],
-        shadowBlur: '10'
       },
     },
     {
@@ -610,7 +608,7 @@ function drawComparisonPieChart(chartData, chartConfig, chartHolder, theme) {
       name: formattedData.dataValues[0].value,
       itemStyle: {
         color: theme[THEME_TOKEN.PRIMARY_COLOR],
-        opacity: 0.5,
+        opacity: 0.3,
       },
     },
   ];
@@ -626,8 +624,6 @@ function drawComparisonPieChart(chartData, chartConfig, chartHolder, theme) {
           r: 0.75,
           colorStops: getGradientStops(theme['neutral-gradient-color'], theme[THEME_TOKEN.NEUTRAL_COLOR]),
         },
-        shadowColor: theme['neutral-gradient-color'],
-        shadowBlur: '10'
       },
     },
     {
@@ -635,7 +631,7 @@ function drawComparisonPieChart(chartData, chartConfig, chartHolder, theme) {
       name: formattedData.dataValues[1].value,
       itemStyle: {
         color: theme[THEME_TOKEN.NEUTRAL_COLOR],
-        opacity: 0.5,
+        opacity: 0.3,
       },
     },
   ];
