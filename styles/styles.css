@@ -620,6 +620,10 @@ main div.people-intro div.row1-text p {
   text-align: left;
 }
 
+main div.section.images-border.image-border-medium-y > div p {
+  transform: translateY(-40%);
+}
+
 main div.section.images-border > div p:not(:last-child) {
   left: 0;
 }
@@ -630,7 +634,7 @@ main div.section.images-border > div p:last-child {
 
 main div.section.images-border > div p.full-width {
   padding-bottom: 80px;
-  width: 100vw;
+  width: 100%;
 }
 
 main div.section.images-border.neutral > div h2 {
