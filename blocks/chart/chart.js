@@ -2,7 +2,9 @@ import { readPredefinedBlockConfig } from '../../scripts/lib-franklin.js';
 import { getTheme, THEME_TOKEN } from '../../scripts/scripts.js';
 
 const MIN_CHART_HEIGHT_INT = 400;
+const MIN_CHART_LANDSCAPE_HEIGHT_INT = 275;
 const MIN_CHART_HEIGHT = `${MIN_CHART_HEIGHT_INT}px`;
+const MIN_LANDSCAPECHART_HEIGHT = `${MIN_CHART_LANDSCAPE_HEIGHT_INT}px`;
 
 /**
  * Prepare data to be displayed in a bar chart
@@ -584,6 +586,7 @@ function drawComparisonBarChart(chartData, chartConfig, chartHolder, theme) {
  * @param {*} theme Theming details, optional
  */
 function drawComparisonPieChart(chartData, chartConfig, chartHolder, theme) {
+  chartConfig.chartHeight = MIN_LANDSCAPECHART_HEIGHT;
   const formattedData = prepareChartData(chartData);
 
   // format data for representation
@@ -664,7 +667,7 @@ function drawComparisonPieChart(chartData, chartConfig, chartHolder, theme) {
         type: 'pie',
         roseType: 'radius',
         radius: ['40%', '55%'],
-        center: ['27.5%', '45%'],
+        center: ['27.5%', '50%'],
         colorBy: 'data',
         label: {
           fontSize: `${theme['computed-font-size-px'] * 3}`,
@@ -679,7 +682,7 @@ function drawComparisonPieChart(chartData, chartConfig, chartHolder, theme) {
         type: 'pie',
         roseType: 'radius',
         radius: ['35%', '47.5%'],
-        center: ['74.5%', '55%'],
+        center: ['74.5%', '65%'],
         colorBy: 'data',
         label: {
           fontSize: `${theme['computed-font-size-px'] * 2.33}`,

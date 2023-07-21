@@ -3,6 +3,12 @@ import {
   decorateFragment,
 } from '../../scripts/scripts.js';
 
+/**
+ * Load fragments to use in comparison
+ * @param {*} comparedItem Node of a compared item,
+ * containing the fragments relating to this item
+ * @returns Comparison fragments, in order of appearance
+ */
 async function loadFragments(comparedItem) {
   const allFragments = [...comparedItem.querySelectorAll('a')];
 

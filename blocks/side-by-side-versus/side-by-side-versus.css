@@ -1,0 +1,105 @@
+.side-by-side-versus.block {
+  position: relative;
+  z-index: 100;
+  display:flex;
+  width: 100%;
+}
+
+.side-by-side-versus.block .vs-comparison-summary {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.side-by-side-versus.block .vs-comparison-left-product {
+  color: var(--text-color-highlight);
+  font-size: var(--heading-font-size-m);
+  font-weight: 500;
+}
+
+.side-by-side-versus.block .vs-comparison-right-product {
+  color: var(--neutral-color);
+  font-size: var(--heading-font-size-s);
+  font-weight: 450;
+}
+
+.side-by-side-versus.block .vs-comparison-summary .chart-container{
+  width:80%;
+}
+
+.side-by-side-versus.block > div {
+  padding: 5px;
+  flex-grow: 1;
+}
+
+.side-by-side-versus.block .vs-comparison-image-left,
+.side-by-side-versus .vs-comparison-image-right {
+  flex-grow:0;
+  width: 12vw;
+}
+
+.side-by-side-versus .vs-comparison-image-right img,
+.side-by-side-versus.block .vs-comparison-image-left img {
+  max-height: 48vw;
+}
+
+.side-by-side-versus.block .vs-title-line {
+  display: flex;
+  border-bottom: 1px solid var(--neutral-color);
+}
+
+.side-by-side-versus.block .vs-title-line > :last-child {
+  color: var(--neutral-color);
+}
+
+.side-by-side-versus.block .vs-title-line > :nth-child(2),
+.side-by-side-versus.block .vs-title-line > :nth-child(3) {
+  text-align: right;
+}
+
+.side-by-side-versus.block .vs-title-line h4 {
+  display: inline-block;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.side-by-side-versus.block .vs-comparison-line {
+  max-width: 64vw;
+  max-height: 35vw;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(200px, 1fr));
+}
+
+.side-by-side-versus.block .vs-comparison-line > div {
+  padding: 0;
+}
+
+.side-by-side-versus.block .vs-comparison-line > div:nth-child(1) {
+  border: none;
+}
+
+.side-by-side-versus.block .vs-comparison-stat-element > .chart-container {
+  padding: 0;
+}
+
+.side-by-side-versus.block .vs-comparison-line > .vs-comparison-stat-element > .chart-container {
+  border-left:1px solid var(--neutral-color);
+  padding-left: 0.2vw;
+  overflow: hidden;
+}
+
+.side-by-side-versus.block .vs-comparison-stat-element > p {
+  text-align: center;
+  border-left: 1px solid var(--neutral-color);
+  padding-top: 1em;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.side-by-side-versus.block .vs-comparison-image-right {
+  filter: grayscale(100%);
+}
+
+.side-by-side-versus.block .vs-comparison-holder {
+  margin-top: 1.5vw;
+}
