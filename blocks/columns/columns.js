@@ -134,8 +134,22 @@ export default function decorate(block) {
     }
   }
   if (block.classList.contains('product-stats')) {
-    const paragraphs = block.querySelectorAll('p, em');
+    const paragraphs = block.querySelectorAll('p, em, h2, h3, h4');
     paragraphs.forEach((p) => { p.classList.add('no-animate'); });
+
+    // Check for header -> first cell of first row is empty.
+    const headerRow = block.querySelectorAll('div > div:first-child > div:first-child');
+    if (headerRow && headerRow.length > 0) {
+      const firstCell = headerRow[0].querySelectorAll('div:first-child');
+      if (firstCell && firstCell[0].childElementCount === 0) {
+        const headerTable = createTag('div', { class: 'product-stats-header' });
+        headerTable.classList.add(...block.classList);
+        headerTable.append(headerRow[0]);
+        block.parentElement.prepend(headerTable);
+        block.parentElement.classList.add('has-header');
+      }
+    }
+
     const trailingText = block.parentElement.parentElement.querySelector('.default-content-wrapper');
     if (trailingText) {
       trailingText.classList.add('product-stats-footer');

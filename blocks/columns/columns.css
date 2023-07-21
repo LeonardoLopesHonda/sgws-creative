@@ -103,6 +103,10 @@
   height: 30vw;
 }
 
+.columns.product-stats-header > div > div {
+  border: none;
+}
+
 .columns.product-stats > div:nth-child(3),
 .columns.product-stats > div:nth-child(4) {
   background-color: var(--background-color);
@@ -141,12 +145,6 @@
 
 .columns.inline-video.video-tall > div > div {
   min-height: 50vw;
-}
-
-.columns.product-stats > div:first-child > div,
-.columns.product-stats > div:nth-child(2) > div {
-  border: 1px solid var(--primary-color);
-  min-height: 128px;
 }
 
 .columns.product-stats > div:nth-child(3) > div {
@@ -191,6 +189,12 @@
   display: flex;
   align-items: end;
   flex-direction: row;
+}
+
+.columns.product-stats:not(.product-stats-header) > div:first-child > div,
+.columns.product-stats:not(.product-stats-header) > div:nth-child(2) > div {
+  border: 1px solid var(--primary-color);
+  min-height: 128px;
 }
 
 .columns.inline-video:not(.video-tall) > div > div:last-child {
@@ -249,14 +253,25 @@
 }
 
 .columns.product-stats {
-  margin: var(--layout-size-xxl) 15vw;
   text-align: center;
   background-color: transparent;
+}
+
+.columns.product-stats-header {
+  margin: var(--layout-size-m) 15vw 0;
+}
+
+.columns.product-stats:not(.product-stats-header) {
+  margin: var(--layout-size-xxl) 15vw;
   background-image: linear-gradient(
     180deg,
     var(--primary-color) 0%,
     var(--secondary-color) 250%
   );
+}
+
+div.has-header .columns.product-stats:not(.product-stats-header) {
+  margin: 0 15vw var(--layout-size-xxl);
 }
 
 .product .columns.stats > div p {
@@ -283,12 +298,24 @@
   filter: brightness(51%) invert(100%);
 }
 
-.columns.product-stats > div:first-child > div:not(:first-child) {
-  background-color: var(--header-background-color);
-}
-
 .columns.icon-list.primary > div > div:not(:last-child) {
   border-right: 1px solid var(--primary-color);
+}
+
+.columns.button-full > div:nth-of-type(odd) > div:nth-of-type(even) {
+  flex-grow: 1.5;
+}
+
+.columns.button-full > div:nth-of-type(even) > div:nth-of-type(odd) {
+  flex-grow: 1.5;
+}
+
+.presentation main .columns.image-overlay.columns-2-cols > div > div {
+  flex: auto;
+}
+
+.columns.product-stats:not(.product-stats-header) > div:first-child > div:not(:first-child) {
+  background-color: var(--header-background-color);
 }
 
 .product-stats-footer {
@@ -373,22 +400,10 @@
   right: var(--layout-size-xxl);
 }
 
-.columns.button-full > div:nth-of-type(odd) > div:nth-of-type(even) {
-  flex-grow: 1.5;
-}
-
-.columns.button-full > div:nth-of-type(even) > div:nth-of-type(odd) {
-  flex-grow: 1.5;
-}
-
 /* Wine bottle animation needs to clip at the bottom edge of the div */
 .presentation main .columns-2-cols p:not(.border).picture.animate {
   animation-name: fade-in-bottom-edge;
   margin-bottom: 0;
-}
-
-.presentation main .columns.image-overlay.columns-2-cols > div > div {
-  flex: auto;
 }
 
 .columns.image-overlay > div > div > .picture {

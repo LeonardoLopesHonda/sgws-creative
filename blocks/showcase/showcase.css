@@ -37,7 +37,6 @@
     height: auto;
     max-width: 50px;
     max-height: 50px;
-    color: var(--secondary-color);
     min-height: 3vw;
     min-width: 3vw;
 }
