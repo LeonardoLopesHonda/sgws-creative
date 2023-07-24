@@ -266,3 +266,45 @@
 .vs-active .icon-list {
   margin-top: 200px;
 }
+
+.vs-active
+  .default-content-wrapper.vertical-selector.heritage.background-image {
+    position: relative;
+  background-size: 120%;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  height: 45vw;
+  filter: sepia(64%);
+}
+
+.vs-active
+  .default-content-wrapper.vertical-selector.heritage.background-image::before {
+    content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #FFFFFF80;
+  z-index: -1;
+  }
+
+
+.vs-active .default-content-wrapper.vertical-selector.heritage p {
+  animation-name: fade-in-left;
+  animation-duration: 1s;
+}
+
+.vs-active
+  .default-content-wrapper.vertical-selector.heritage
+  > p:first-of-type {
+  font-size: var(--heading-font-size-xl);
+  font-style: italic;
+  color: var(--primary-color);
+}
+
+.vs-active
+  .default-content-wrapper.vertical-selector.heritage
+  > p:nth-last-of-type(-n + 2) {
+  padding: 0 15vw;
+}

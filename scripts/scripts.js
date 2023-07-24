@@ -403,6 +403,24 @@ export function decorateSectionBackgrounds(main) {
 }
 
 /**
+ * Decorates the background of all highlighted vertical selector sections.
+ * @param {Element} main The container element
+ */
+export function decorateVerticalSelectorBackgrounds(main) {
+  main.querySelectorAll('.section.vertical-selector.background-image').forEach((section) => {
+    const backgroundPicture = section.querySelector(':scope > picture:last-child');
+    const grid = section.querySelector('div.default-content-wrapper');
+    // See if first element is a picture - used as the background since section is 'highlighted'
+    if (backgroundPicture) {
+      grid.classList.add(...section.classList);
+      const image = backgroundPicture.querySelector('img');
+      grid.style.backgroundImage = `url(${image.src})`;
+      backgroundPicture.remove();
+    }
+  });
+}
+
+/**
  * Decorates people introduction block.
  * @param {Element} main The container element
  */
@@ -459,6 +477,7 @@ function decorateMain(main) {
   decorateSectionBackgrounds(main);
   decorateBorders(main);
   decoratePeople(main);
+  decorateVerticalSelectorBackgrounds(main);
 
   // observe animations
   main.querySelectorAll('h1, h2, h3, p:not(.border)').forEach((element) => {
