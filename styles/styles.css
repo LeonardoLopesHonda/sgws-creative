@@ -445,6 +445,27 @@ main .product .section.background-image > picture img {
   box-sizing: border-box;
 }
 
+main div.section.images-border > div p.full-width img {
+  width: 100%;
+}
+
+main .section.background-video .default-content-wrapper > p.picture:first-child > picture > img {
+  width: calc(25vw);
+  margin-bottom: 7.5vw;
+}
+
+main .section.background-video .default-content-wrapper > p.picture:nth-child(2) > picture > img {
+  width: calc(5vw);
+}
+
+main div.section.images-border.image-centered .default-content-wrapper .picture > picture > img {
+  margin-top: 25%;
+}
+
+main div.section.images-border.image-down .default-content-wrapper .picture > picture > img {
+  margin-top: 130%;
+}
+
 main .section.background-video {
   padding: 0;
   overflow: hidden;
@@ -466,19 +487,6 @@ main .section.background-video .default-content-wrapper {
   text-align: center;
   padding-top: 12.5%;
   padding-bottom: 12.5%;
-}
-
-main div.section.images-border > div p.full-width img {
-  width: 100%;
-}
-
-main .section.background-video .default-content-wrapper > p.picture:first-child > picture > img {
-  width: calc(25vw);
-  margin-bottom: 7.5vw;
-}
-
-main .section.background-video .default-content-wrapper > p.picture:nth-child(2) > picture > img {
-  width: calc(5vw);
 }
 
 main .section.background-video .default-content-wrapper h1 {
