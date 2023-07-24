@@ -208,8 +208,7 @@ function drawHistogramChartWithOverlay(chartData, chartConfig, chartHolder, them
     const predicted = formattedData.dataValuesOverlay[index]
       ? formattedData.dataValuesOverlay[index].value === 'predicted'
       : false;
-    // Need a "predicted" gradient-end color here?  Maybe from the authored doc
-    // instead of 'predicted' text in the last column?
+
     const endColor = predicted ? '#565656' : theme['primary-gradient-color'];
     datapoint.itemStyle = {
       color: getLinearColorGradient(theme[THEME_TOKEN.PRIMARY_COLOR], endColor),
@@ -829,10 +828,12 @@ export default function decorate(block) {
   let chartHolder = document.createElement('div');
 
   // Predicted
-  const predictedXAxisBlock = createTag('div', { class: 'echart-predicted-axis' });
-  predictedXAxisBlock.innerText = 'Predicted';
-
-  block.append(chartHolder, predictedXAxisBlock);
+  let predictedXAxisBlock;
+  if (block.classList.contains('predicted-values')) {
+    predictedXAxisBlock = createTag('div', { class: 'echart-predicted-axis' });
+    predictedXAxisBlock.innerText = 'Predicted';
+    block.append(chartHolder, predictedXAxisBlock);
+  }
 
   const pageTheme = getTheme() || [];
   const theme = pageTheme.reduce((obj, { token, value }) => ({ ...obj, [token]: value }), {});
@@ -855,11 +856,16 @@ export default function decorate(block) {
     resizeTimeout = setTimeout(() => {
       if (echartsLoaded) {
         computeFontSizes(block, theme);
-        // redraw scaled chart
         chartHolder.remove();
-        predictedXAxisBlock.remove();
+        if (block.classList.contains('predicted-values')) {
+          predictedXAxisBlock.remove();
+        }
         chartHolder = document.createElement('div');
-        block.append(chartHolder, predictedXAxisBlock);
+        if (block.classList.contains('predicted-values')) {
+          block.append(chartHolder, predictedXAxisBlock);
+        } else {
+          block.append(chartHolder);
+        }
         drawChart(block, data, cfg, chartHolder, theme);
       }
     }, 250);
@@ -869,9 +875,15 @@ export default function decorate(block) {
     if (echartsLoaded) {
       computeFontSizes(block, theme);
       chartHolder.remove();
-      predictedXAxisBlock.remove();
+      if (block.classList.contains('predicted-values')) {
+        predictedXAxisBlock.remove();
+      }
       chartHolder = document.createElement('div');
-      block.append(chartHolder, predictedXAxisBlock);
+      if (block.classList.contains('predicted-values')) {
+        block.append(chartHolder, predictedXAxisBlock);
+      } else {
+        block.append(chartHolder);
+      }
       drawChart(block, data, cfg, chartHolder, theme);
     }
   });
