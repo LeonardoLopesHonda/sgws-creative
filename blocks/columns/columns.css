@@ -334,7 +334,7 @@ div.has-header .columns.product-stats:not(.product-stats-header) {
 
 .columns.inline-video > div > div .video-group button {
   position: absolute;
-  top: 35%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   border: none;
