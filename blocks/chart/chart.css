@@ -1,1 +1,11 @@
 /* charts css */
+
+main div.chart.bars div.echart-predicted-axis {
+  width: 15vw;
+  background-image: linear-gradient(to right, var(--primary-color), #565656);
+  color: var(--text-secondary-color-background);
+  right: calc(var(--layout-size-xxl) + 9.5vw);
+  position: absolute;
+  text-align: center;
+  margin-top: -40px;
+}

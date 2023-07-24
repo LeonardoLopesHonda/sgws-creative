@@ -1,5 +1,5 @@
 import { readPredefinedBlockConfig } from '../../scripts/lib-franklin.js';
-import { getTheme, THEME_TOKEN } from '../../scripts/scripts.js';
+import { createTag, getTheme, THEME_TOKEN } from '../../scripts/scripts.js';
 
 const MIN_CHART_HEIGHT_INT = 400;
 const MIN_CHART_LANDSCAPE_HEIGHT_INT = 275;
@@ -40,9 +40,11 @@ function prepareChartDataWithOverlay(chartData) {
     dataValues[index] = {
       value: row.value,
     };
-    overlayValues[index] = {
-      value: row.additionalValues[0],
-    };
+    if (row.additionalValues) {
+      overlayValues[index] = {
+        value: row.additionalValues[0],
+      };
+    }
   });
   return {
     barNames,
@@ -123,13 +125,17 @@ function buildChartRepresentation(chartConfig, theme) {
   const chartDescription = {};
   chartDescription.title = {
     text: chartConfig.title || '',
+    subtext: chartConfig.subtext ? chartConfig.subtext.replace(';', ';\n\n') : '',
+    subtextStyle: {
+      width: '150px',
+    },
     textStyle: {
       color: theme[THEME_TOKEN.PRIMARY_COLOR],
       fontWeight: theme['font-weight'],
       fontFamily: theme[THEME_TOKEN.BODY_FONT_FAMILY],
       fontSize: `${theme['computed-font-size-px'] * 2}px`,
     },
-    left: 'center',
+    left: chartConfig.subtext ? '10%' : 'center',
   };
   if (chartConfig.legend) {
     chartDescription.legend = {
@@ -137,11 +143,16 @@ function buildChartRepresentation(chartConfig, theme) {
       orient: 'vertical',
       selectedMode: false,
       top: '10%',
-      right: '17.5%',
       itemStyle: {
         color: getLinearColorGradient(theme[THEME_TOKEN.PRIMARY_COLOR], theme['primary-gradient-color']),
       },
     };
+
+    if (chartConfig.legendLeft) {
+      chartDescription.legend.left = '10%';
+    } else {
+      chartDescription.legend.right = '17.5%';
+    }
   }
 
   return chartDescription;
@@ -191,18 +202,26 @@ function drawHistogramChartWithOverlay(chartData, chartConfig, chartHolder, them
 
   // stylings
   let max = Number.NEGATIVE_INFINITY;
-  formattedData.dataValuesHistogram.forEach((datapoint) => {
+  formattedData.dataValuesHistogram.forEach((datapoint, index) => {
     datapoint.value = Number(datapoint.value);
     max = Math.max(max, datapoint.value);
+    const predicted = formattedData.dataValuesOverlay[index]
+      ? formattedData.dataValuesOverlay[index].value === 'predicted'
+      : false;
+    // Need a "predicted" gradient-end color here?  Maybe from the authored doc
+    // instead of 'predicted' text in the last column?
+    const endColor = predicted ? '#565656' : theme['primary-gradient-color'];
     datapoint.itemStyle = {
-      color: getLinearColorGradient(theme[THEME_TOKEN.PRIMARY_COLOR], theme['primary-gradient-color']),
+      color: getLinearColorGradient(theme[THEME_TOKEN.PRIMARY_COLOR], endColor),
     };
   });
   formattedData.dataValuesOverlay.forEach((datapoint) => {
-    datapoint.value = Number(datapoint.value);
-    datapoint.itemStyle = {
-      color: theme['neutral-gradient-color'],
-    };
+    if (!Number.isNaN(datapoint.value)) {
+      datapoint.value = Number(datapoint.value);
+      datapoint.itemStyle = {
+        color: theme['neutral-gradient-color'],
+      };
+    }
   });
   const axisConfig = {
     type: 'value',
@@ -725,6 +744,7 @@ function drawChart(block, chartData, chartConfig, chartHolder, theme) {
   }
   if (blockClassList.contains('bars')) {
     chartConfig.legend = blockClassList.contains('graph-legend');
+    chartConfig.legendLeft = blockClassList.contains('graph-legend-left');
     if (chartData.length === 2) {
       // comparison
       drawComparisonBarChart(chartData, chartConfig, chartHolder, theme);
@@ -787,6 +807,7 @@ export default function decorate(block) {
       'unit',
       'overlay-unit',
       'title',
+      'subtext',
       'subtitle',
       'chart-scale',
       'chart-scale-step',
@@ -797,6 +818,7 @@ export default function decorate(block) {
       'scale-overlay-label-suffix',
       'scale-step-prefix',
       'chart-data-ending',
+      'predicted',
     ],
     removeAfterRead: true,
   };
@@ -805,7 +827,12 @@ export default function decorate(block) {
 
   window.hasCharts = true;
   let chartHolder = document.createElement('div');
-  block.append(chartHolder);
+
+  // Predicted
+  const predictedXAxisBlock = createTag('div', { class: 'echart-predicted-axis' });
+  predictedXAxisBlock.innerText = 'Predicted';
+
+  block.append(chartHolder, predictedXAxisBlock);
 
   const pageTheme = getTheme() || [];
   const theme = pageTheme.reduce((obj, { token, value }) => ({ ...obj, [token]: value }), {});
@@ -830,8 +857,9 @@ export default function decorate(block) {
         computeFontSizes(block, theme);
         // redraw scaled chart
         chartHolder.remove();
+        predictedXAxisBlock.remove();
         chartHolder = document.createElement('div');
-        block.append(chartHolder);
+        block.append(chartHolder, predictedXAxisBlock);
         drawChart(block, data, cfg, chartHolder, theme);
       }
     }, 250);
@@ -841,8 +869,9 @@ export default function decorate(block) {
     if (echartsLoaded) {
       computeFontSizes(block, theme);
       chartHolder.remove();
+      predictedXAxisBlock.remove();
       chartHolder = document.createElement('div');
-      block.append(chartHolder);
+      block.append(chartHolder, predictedXAxisBlock);
       drawChart(block, data, cfg, chartHolder, theme);
     }
   });
