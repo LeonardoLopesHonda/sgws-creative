@@ -33,7 +33,7 @@
   width: fit-content;
   display: flex;
   flex-direction: row;
-  flex-basis: 60%;
+  flex-basis: 70%;
 }
 
 .comparison.size.block > div {
@@ -56,10 +56,22 @@
   transform: scale(0.9);
 }
 
+.comparison.size.block>div>div:nth-child(2n) {
+  margin-top: 10px;
+}
+
 .comparison.size.block > div > div:last-child {
   color: var(--neutral-color);
   font-weight: 500;
   font-size: var(--heading-font-size-m);
+}
+
+.comparison.bottles.block>div:nth-child(1) .picture {
+  padding-top: 4vw;
+}
+
+.comparison.bottles.block>div:nth-child(2) .picture {
+  padding-top: 5.5vw;
 }
 
 .comparison.bottles.block>div:nth-child(2)>div:not(.picture),
@@ -74,5 +86,95 @@
 @media screen and (min-width: 1100px) {
   .vs-active.wood-table > div > div {
     min-height: unset !important;
+  }
+}
+
+/* Media queries for size comparison block */
+
+@media screen and (min-width: 2000px) {
+  .comparison.size.block .bottles-comparison-placeholder {
+    height: 8vw;
+  }
+}
+
+@media screen and (min-width: 1540px) {
+  .comparison.size.block {
+    padding-top: 8vw;
+  }
+
+  .comparison.bottles.block>div:nth-child(1) .picture {
+    padding-top: 3vw;
+  }
+
+  .comparison.bottles.block>div:nth-child(2) .picture {
+    padding-top: 4.5vw;
+  }
+}
+
+@media screen and (max-width: 1275px) {
+  .comparison.size.block {
+    transform: scale(0.95);
+  }
+  
+}
+
+@media screen and (max-width: 1225px) {
+  .comparison.size.block {
+    transform: scale(0.9);
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  .comparison.size.block {
+    transform: scale(0.85);
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .comparison.size.block {
+    transform: scale(0.8);
+  }
+}
+
+@media screen and (max-width: 1025px) {
+  .comparison.size.block {
+    transform: scale(0.7);
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .comparison.size.block {
+    transform: scale(0.6);
+    padding-top: unset;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .comparison.size.block {
+    transform: scale(0.5);
+    padding-top: 4em;
+  }
+  
+  .comparison.bottles.block>div:nth-child(1) .picture {
+    padding-top: 5vw;
+  }
+
+  .comparison.bottles.block>div:nth-child(2) .picture {
+    padding-top: 6.5vw;
+  }
+}
+
+@media screen and (max-width: 675px) {
+  .comparison.size.block {
+    transform: scale(0.45);
+    padding-top: 8em;
+  }
+  
+  .comparison.bottles.block>div:nth-child(1) .picture {
+    padding-top: 7vw;
+  }
+
+  .comparison.bottles.block>div:nth-child(2) .picture {
+    padding-top: 7.5vw;
   }
 }
