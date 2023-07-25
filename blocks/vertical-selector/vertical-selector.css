@@ -39,8 +39,8 @@
 }
 
 .vertical-selector .fragment-selector svg > * {
-  color: var(--primary-color);
-  fill: var(--primary-color);
+  color: var(--secondary-color);
+  fill: var(--secondary-color);
 }
 
 .vertical-selector .fragment-viewer > div *,

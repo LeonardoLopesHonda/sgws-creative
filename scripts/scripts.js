@@ -39,9 +39,13 @@ export const animationObserver = new IntersectionObserver((entries) => {
     const { target, isIntersecting } = entry;
     if (!target.closest('.no-animate')) {
       if (isIntersecting) {
-        target.classList.add('animate');
-      } else {
-        target.classList.remove('animate');
+        if (!target.classList.contains('animate')) {
+          target.classList.add('animate');
+          target.addEventListener('animationend', () => {
+            target.classList.remove('animate');
+            target.classList.add('viewed-once');
+          }, { passive: true, once: true });
+        }
       }
     }
   }, { threshold: 0.1 });
