@@ -625,6 +625,7 @@ main div.section.images-border > div p {
   position: absolute;
   margin: 0;
   transform: translateY(-80%);
+  max-width: 40vw;
 }
 
 main div.people-intro div.row1-text p {
@@ -646,6 +647,7 @@ main div.section.images-border > div p:last-child {
 main div.section.images-border > div p.full-width {
   padding-bottom: 80px;
   width: 100%;
+  max-width: unset;
 }
 
 main div.images-border.images-border-bottom-margin-small > div p.full-width {
