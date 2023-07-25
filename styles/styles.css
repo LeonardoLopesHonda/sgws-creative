@@ -416,6 +416,10 @@ main .section.chart-map-container.background-image {
   overflow: unset;
 }
 
+main .section.background-image > picture {
+  opacity: 1 !important;
+}
+
 main .section.background-image > picture > img {
   width: 100%;
   position: absolute;
@@ -424,7 +428,7 @@ main .section.background-image > picture > img {
   bottom: 0;
   right: 0;
   min-height: 100%;
-  object-fit: cover;
+  object-fit: fill;
   z-index: -5;
 }
 
@@ -433,6 +437,7 @@ main div.section.banner picture {
 }
 
 main .section.background-image:not(:first-child) > picture {
+  opacity: 0.5;
   top: auto;
 }
 
