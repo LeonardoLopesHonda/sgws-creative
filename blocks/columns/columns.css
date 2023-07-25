@@ -197,6 +197,8 @@
 .columns.product-stats:not(.product-stats-header) > div:nth-child(2) > div {
   border: 1px solid var(--primary-color);
   min-height: 128px;
+  font-weight: bold;
+  font-size: larger;
 }
 
 .columns.inline-video:not(.video-tall) > div > div:last-child {
@@ -304,12 +306,15 @@ div.has-header .columns.product-stats:not(.product-stats-header) {
   border-right: 1px solid var(--primary-color);
 }
 
-.columns.button-full > div:nth-of-type(odd) > div:nth-of-type(even) {
+.columns.button-full > div:nth-of-type(odd) > div:nth-of-type(even),
+.columns.button-full > div:nth-of-type(even) > div:nth-of-type(odd) {
   flex-grow: 1.5;
 }
 
-.columns.button-full > div:nth-of-type(even) > div:nth-of-type(odd) {
-  flex-grow: 1.5;
+.first-column-other-color:not(:first-child) > div:nth-child(2) > div:first-child,
+.first-column-other-color:not(:first-child) > div:first-child > div:first-child {
+  color: var(--secondary-color);
+  font-size: initial;
 }
 
 .presentation main .columns.image-overlay.columns-2-cols > div > div {

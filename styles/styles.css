@@ -267,6 +267,7 @@ a:any-link span.icon-arrow-small {
 .presentation main h3.animate,
 .presentation main p:not(.border).animate {
   animation-name: fade-in-bottom;
+  transform-origin: center center;
 }
 
 /* Default animations for product template */
@@ -753,6 +754,11 @@ main div.people-intro div.row2-text p:last-child {
   padding-left: 0;
   padding-right: 0;
   text-align: unset;
+}
+
+/* Prevent text from disappearing if animation replays */
+main .viewed-once {
+  opacity: 1 !important;
 }
 
 /* animations */
