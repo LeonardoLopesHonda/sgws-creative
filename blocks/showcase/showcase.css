@@ -123,4 +123,5 @@
 
 .showcase > div > .showcase-image-cell picture img {
     height: 100%;
+    filter: drop-shadow(0 5px 2px dimgray);
 }

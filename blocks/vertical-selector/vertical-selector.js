@@ -127,14 +127,12 @@ export default async function decorate(block) {
         'aria-label': `Fragment View Selector ${rowIndex}`,
       });
       const selectorText = createTag('p', {});
-      selectorText.innerHTML = `#${rowIndex}: ${columns[0].innerHTML}`;
+      const arrowIcon = createIcon('arrow-small');
+      const checkIcon = createIcon('check');
+      selectorText.innerHTML = `#${rowIndex}: ${columns[0].innerHTML} ${arrowIcon.outerHTML} ${checkIcon.outerHTML}`;
       nextSelector.append(selectorText);
 
-      const nextSelectorIcon = createTag('div', {});
-      nextSelectorIcon.append(createIcon('arrow-small'));
-      nextSelectorIcon.append(createIcon('check'));
       nextSelector.append(selectorText);
-      nextSelector.append(nextSelectorIcon);
 
       nextSelector.addEventListener('click', () => {
         handleSelectorClick(block, rowIndex);

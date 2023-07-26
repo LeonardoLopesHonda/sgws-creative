@@ -150,9 +150,15 @@ export default function decorate(block) {
       }
     }
 
-    const trailingText = block.parentElement.parentElement.querySelector('.default-content-wrapper');
-    if (trailingText) {
-      trailingText.classList.add('product-stats-footer');
+    const productStatsText = block.parentElement.parentElement.querySelectorAll('.default-content-wrapper');
+    const productStatsTextElements = [...productStatsText];
+    if (productStatsTextElements.length === 1) {
+      productStatsTextElements[0].classList.add('product-stats-footer');
+    } else if (productStatsTextElements.length > 1) {
+      const firstTextElement = productStatsTextElements[0];
+      firstTextElement.classList.add('product-stats-header-title');
+      const lastTextElement = productStatsTextElements[productStatsTextElements.length - 1];
+      lastTextElement.classList.add('product-stats-footer');
     }
   }
 }

@@ -3,6 +3,19 @@
   --stats-body-text-color: var(--text-color-background);
 }
 
+.section.columns-container .columns.columns-2-cols h2 {
+  text-transform: uppercase;
+}
+
+.section.columns-container .columns.columns-2-cols.inline-video h2::after {
+  content: " ";
+  display: block;
+  margin: 1em 0;
+  width: 2.5em;
+  border-bottom: 2px solid var(--primary-color);
+}
+
+
 .section.columns-container.highlight .columns {
   background-color: var(--background-color);
   color: var(--text-color);
@@ -218,10 +231,16 @@
   right: 10%;
 }
 
+.product-stats-header-title > p,
 .product-stats-footer > p {
   font-size: large;
 }
 
+.product-stats-header-title > p {
+  margin: 1em 10vw;
+}
+
+.product-stats-header-title > p:last-child,
 .product-stats-footer > p:last-child {
   font-size: larger;
   font-weight: bold;
@@ -306,11 +325,6 @@ div.has-header .columns.product-stats:not(.product-stats-header) {
   border-right: 1px solid var(--primary-color);
 }
 
-.columns.button-full > div:nth-of-type(odd) > div:nth-of-type(even),
-.columns.button-full > div:nth-of-type(even) > div:nth-of-type(odd) {
-  flex-grow: 1.5;
-}
-
 .first-column-other-color:not(:first-child) > div:nth-child(2) > div:first-child,
 .first-column-other-color:not(:first-child) > div:first-child > div:first-child {
   color: var(--secondary-color);
@@ -325,6 +339,7 @@ div.has-header .columns.product-stats:not(.product-stats-header) {
   background-color: var(--header-background-color);
 }
 
+.product-stats-header-title,
 .product-stats-footer {
   display: flex;
   flex-flow: column wrap;
@@ -379,6 +394,10 @@ div.has-header .columns.product-stats:not(.product-stats-header) {
   right: 0;
   bottom: 0;
   z-index: -1;
+}
+
+.product .columns.inline-video > div > div p.video-group video {
+  width: 100%;
 }
 
 .columns.icon-list span.icon {
@@ -527,3 +546,4 @@ div.has-header .columns.product-stats:not(.product-stats-header) {
     opacity: 0;
   }
 }
+
