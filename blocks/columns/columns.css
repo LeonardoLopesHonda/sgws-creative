@@ -231,10 +231,16 @@
   right: 10%;
 }
 
+.product-stats-header-title > p,
 .product-stats-footer > p {
   font-size: large;
 }
 
+.product-stats-header-title > p {
+  margin: 1em 10vw;
+}
+
+.product-stats-header-title > p:last-child,
 .product-stats-footer > p:last-child {
   font-size: larger;
   font-weight: bold;
@@ -333,6 +339,7 @@ div.has-header .columns.product-stats:not(.product-stats-header) {
   background-color: var(--header-background-color);
 }
 
+.product-stats-header-title,
 .product-stats-footer {
   display: flex;
   flex-flow: column wrap;
