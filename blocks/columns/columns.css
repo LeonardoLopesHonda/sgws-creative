@@ -7,7 +7,7 @@
   text-transform: uppercase;
 }
 
-.section.columns-container .columns.columns-2-cols h2::after {
+.section.columns-container .columns.columns-2-cols.inline-video h2::after {
   content: " ";
   display: block;
   margin: 1em 0;
