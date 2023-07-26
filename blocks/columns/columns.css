@@ -3,6 +3,19 @@
   --stats-body-text-color: var(--text-color-background);
 }
 
+.section.columns-container .columns.columns-2-cols h2 {
+  text-transform: uppercase;
+}
+
+.section.columns-container .columns.columns-2-cols h2::after {
+  content: " ";
+  display: block;
+  margin: 1em 0;
+  width: 2.5em;
+  border-bottom: 2px solid var(--primary-color);
+}
+
+
 .section.columns-container.highlight .columns {
   background-color: var(--background-color);
   color: var(--text-color);
@@ -306,11 +319,6 @@ div.has-header .columns.product-stats:not(.product-stats-header) {
   border-right: 1px solid var(--primary-color);
 }
 
-.columns.button-full > div:nth-of-type(odd) > div:nth-of-type(even),
-.columns.button-full > div:nth-of-type(even) > div:nth-of-type(odd) {
-  flex-grow: 1.5;
-}
-
 .first-column-other-color:not(:first-child) > div:nth-child(2) > div:first-child,
 .first-column-other-color:not(:first-child) > div:first-child > div:first-child {
   color: var(--secondary-color);
@@ -531,3 +539,4 @@ div.has-header .columns.product-stats:not(.product-stats-header) {
     opacity: 0;
   }
 }
+
