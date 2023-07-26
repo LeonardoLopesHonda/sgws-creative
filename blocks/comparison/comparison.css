@@ -72,6 +72,14 @@
   filter: drop-shadow(0 5px 2px dimgray);
 }
 
+.comparison.bottles.block > div:first-child > div:first-child img {
+  filter: drop-shadow(0 5px 2px dimgray);
+}
+
+.comparison.bottles.block > div:nth-child(2) > div:first-child img {
+  filter: drop-shadow(0 3px 2px dimgray);
+}
+
 .comparison.bottles.block>div:nth-child(1) .picture {
   padding-top: 4vw;
 }
