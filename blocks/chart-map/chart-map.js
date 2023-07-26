@@ -136,7 +136,7 @@ function drawRawMap(block, mapHolder, mapData, mapConfig) {
   mapChart.on('click', (params) => {
     handleStateDataOverlay(block, params.data, {
       x: params.event.offsetX + block.offsetLeft + mapHolder.offsetLeft / 2,
-      y: params.event.offsetY + block.offsetTop,
+      y: Math.min(params.event.offsetY + block.offsetTop, mapConfig.chartHeight - 200),
     });
   });
 }
