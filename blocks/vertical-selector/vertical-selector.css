@@ -199,6 +199,7 @@
 
 .vertical-selector .fragment-selector > div.vs-active .icon-check {
   display: inline-block;
+  vertical-align: middle;
 }
 
 .vertical-selector .fragment-selector > div.vs-active .icon-arrow-small {
@@ -207,7 +208,7 @@
 
 .vertical-selector .fragment-selector .icon-arrow-small svg {
   transform: rotate(180deg);
-  transform-origin: center center;
+  vertical-align: middle;
 }
 
 .vs-active.wood-table::after {
@@ -269,7 +270,7 @@
 
 .vs-active
   .default-content-wrapper.vertical-selector.heritage.background-image {
-    position: relative;
+  position: relative;
   background-size: 120%;
   background-position: center 30%;
   background-repeat: no-repeat;
@@ -279,20 +280,25 @@
 
 .vs-active
   .default-content-wrapper.vertical-selector.heritage.background-image::before {
-    content: "";
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #FFFFFF80;
+  background-color: #ffffff80;
   z-index: -1;
-  }
-
+}
 
 .vs-active .default-content-wrapper.vertical-selector.heritage p {
   animation-name: fade-in-left;
   animation-duration: 1s;
+}
+
+.vertical-selector .fragment-selector > div:not(.vs-active) p:hover,
+.vertical-selector .fragment-selector > div:not(.vs-active) p:hover svg > * {
+  color: var(--neutral-color);
+  fill: var(--neutral-color);
 }
 
 .vs-active
@@ -307,4 +313,29 @@
   .default-content-wrapper.vertical-selector.heritage
   > p:nth-last-of-type(-n + 2) {
   padding: 0 15vw;
+}
+
+.vertical-selector.inverted-colors
+  .fragment-selector
+  > div:not(.vs-active)
+  p:hover,
+.vertical-selector.inverted-colors
+  .fragment-selector
+  > div:not(.vs-active)
+  p:hover
+  svg
+  > * {
+  color: var(--neutral-color);
+  fill: var(--neutral-color);
+}
+
+.vertical-selector.neutral .fragment-selector > div:not(.vs-active) p:hover,
+.vertical-selector.neutral
+  .fragment-selector
+  > div:not(.vs-active)
+  p:hover
+  svg
+  > * {
+  color: var(--text-color-background);
+  fill: var(--text-color-background);
 }
