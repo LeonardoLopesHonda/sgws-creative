@@ -63,6 +63,9 @@ export default async function decorate(block) {
   // elements to put in the middle that compare left and right
   const statsToUseForCompare = comparisonParts[1].querySelectorAll('a');
   const loadingFragmentsTask = loadFragments(statsToUseForCompare);
+  statsToUseForCompare.forEach((linkElement) => {
+    linkElement.remove();
+  });
   const comparisonTitles = [...comparisonParts[1].querySelectorAll('p:not(.button-container')];
   // get the compared elements components
   const leftComparisonItem = getComparisonItem(comparisonParts[0]);
