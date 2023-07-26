@@ -418,19 +418,16 @@ main .section.chart-map-container.background-image {
 }
 
 main .section.background-image > picture {
-  opacity: 1 !important;
-}
-
-main .section.background-image > picture > img {
-  width: 100%;
   position: absolute;
+  z-index: -5;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-  min-height: 100%;
-  object-fit: fill;
-  z-index: -5;
+}
+
+main .section.background-image > picture > img {
+  width: 100%;
 }
 
 main div.section.banner picture {
