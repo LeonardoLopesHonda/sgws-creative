@@ -91,7 +91,7 @@ export default async function decorate(block) {
 
     viewSourceBtn.addEventListener('click', () => {
       sources.classList.add('open');
-    });
+    }, { passive: true });
 
     const footerButtonsWrapperDiv = createTag('div');
     const contactUsWrapperPara = createTag('p', { class: 'button-container' });
@@ -111,7 +111,7 @@ export default async function decorate(block) {
 
     closeBtn.addEventListener('click', () => {
       sources.classList.remove('open');
-    });
+    }, { passive: true });
 
     // add navigation buttons
     const previousButton = createTag('a', {

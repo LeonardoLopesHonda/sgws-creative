@@ -90,11 +90,10 @@ export default function decorate(block) {
           helpIcon.addEventListener('click', () => {
             helpIcon.closest('div.columns-wrapper').classList.toggle('help-open');
             tabView.classList.toggle('help-open');
-          });
+          }, { passive: true });
           helpP.append(helpIcon);
 
-          helpDiv.append(parent);
-          helpDiv.append(helpP);
+          helpDiv.append(parent, helpP);
           col.append(helpDiv);
 
           // Image to overlay
@@ -112,7 +111,7 @@ export default function decorate(block) {
           closeIcon.addEventListener('click', () => {
             helpIcon.closest('div.columns-wrapper').classList.remove('help-open');
             tabView.classList.remove('help-open');
-          });
+          }, { passive: true });
           block.parentNode.append(closeIcon);
           decorateIcons(block.parentNode);
 
