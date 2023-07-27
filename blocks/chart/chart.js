@@ -869,7 +869,7 @@ export default function decorate(block) {
         drawChart(block, data, cfg, chartHolder, theme);
       }
     }, 250);
-  });
+  }, { passive: true });
   // Trigger this event type to draw the charts immediately.
   window.addEventListener('drawChart', () => {
     if (echartsLoaded) {
@@ -886,5 +886,5 @@ export default function decorate(block) {
       }
       drawChart(block, data, cfg, chartHolder, theme);
     }
-  });
+  }, { passive: true });
 }

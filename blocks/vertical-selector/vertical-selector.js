@@ -8,11 +8,12 @@ import {
 } from '../../scripts/scripts.js';
 import { decorateIcons } from '../../scripts/lib-franklin.js';
 
-async function loadFragment(cell) {
+/* async */ function loadFragment(cell) {
   const link = cell.querySelector('a');
   const path = link ? link.getAttribute('href') : cell.textContent.trim();
-  let fragment = await fetchFragment(path);
-  fragment = await decorateFragment(fragment);
+  const fragment = fetchFragment(path).then(
+    (responseFragment) => decorateFragment(responseFragment),
+  );
   return fragment;
 }
 
@@ -102,7 +103,7 @@ function handleSelectorClick(scope, index) {
   }
 }
 
-export default async function decorate(block) {
+export default function decorate(block) {
   const fragmentViewer = createTag('div', { class: 'fragment-viewer' });
   const fragmentSelectors = createTag('div', { class: 'fragment-selector', 'aria-label': 'Fragment View Selectors' });
 
@@ -136,9 +137,10 @@ export default async function decorate(block) {
 
       nextSelector.addEventListener('click', () => {
         handleSelectorClick(block, rowIndex);
-      });
+      }, { passive: true });
       fragmentSelectors.append(nextSelector);
 
+      /* lazily load fragments, since they are hidden */
       loadFragment(columns[1])
         .then((fragment) => {
           if (fragment) {
@@ -173,13 +175,11 @@ export default async function decorate(block) {
   closeIcon.classList.add('animate');
   closeIcon.addEventListener('click', () => {
     handleSelectorClick(block, 0);
-  });
+  }, { passive: true });
   closeContainer.append(closeIcon);
 
   decorateIcons(closeContainer);
   decorateIcons(fragmentSelectors);
 
-  block.append(closeContainer);
-  block.append(fragmentViewer);
-  block.append(fragmentSelectors);
+  block.append(closeContainer, fragmentViewer, fragmentSelectors);
 }

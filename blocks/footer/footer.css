@@ -130,6 +130,7 @@ footer .sources > div > div {
 .product .product-footer-nav > div svg {
   color: var(--primary-color);
   fill: var(--primary-color);
+  text-transform: uppercase;
   margin: 0;
 }
 
@@ -182,7 +183,7 @@ footer .sources .header .sources-nav a:hover::before {
   transform-origin: center;
   animation: zoom-center .25s linear;
   border-radius: 50%;
-  background-color: #000;
+  background-color: var(--static-color-black);
 }
 
 footer .sources .header .sources-nav a.sources-next {
