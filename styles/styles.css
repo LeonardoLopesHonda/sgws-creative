@@ -440,7 +440,7 @@ main .section.background-image:not(:first-child) > picture {
   top: auto;
 }
 
-main:not(.product) .section.background-image:not(:first-child) > picture {
+body:not(.product) .section.background-image:not(:first-child) > picture {
   opacity: 1;
   top: 0;
 }
