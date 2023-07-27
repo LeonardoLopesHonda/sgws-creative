@@ -135,10 +135,14 @@ main div.section.images-border .default-content-wrapper h2::after {
 .product .section:not(.quote) .default-content-wrapper h2::after {
   content: '';
   display: block;
-  border-bottom: 3px solid var(--secondary-text-color-background);
+  border-bottom: 3px solid var(--primary-color);
   padding-top: 0.5vw;
   width: 12.5%;
   margin: 1px auto;
+}
+
+.product .section:not(.quote.neutral) .default-content-wrapper h2::after {
+  border-bottom: 3px solid var(--neutral-color);
 }
 
 h3 {
@@ -424,6 +428,7 @@ main .section.background-image > picture {
 
 main .section.background-image > picture > img {
   width: 100%;
+  min-height: 100%;
 }
 
 main div.section.banner picture {
@@ -433,6 +438,11 @@ main div.section.banner picture {
 main .section.background-image:not(:first-child) > picture {
   opacity: 0.5;
   top: auto;
+}
+
+main:not(.product) .section.background-image:not(:first-child) > picture {
+  opacity: 1;
+  top: 0;
 }
 
 main .product .section.background-image > picture img {
