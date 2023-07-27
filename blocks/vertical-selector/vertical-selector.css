@@ -221,39 +221,6 @@
   background-size: cover;
 }
 
-.vs-active.wood-table .animateimage.tab2 > div {
-  display: flex;
-  flex-direction: row;
-  width: auto;
-  position: relative;
-}
-
-.vs-active.wood-table .animateimage.tab2 .picture {
-  position: absolute;
-  left: 40vw;
-  top: 14vw;
-}
-
-.vs-active.wood-table .animateimage.tab2 .picture img {
-  width: 90%;
-}
-
-.vs-active.wood-table .animateimage.tab2 h2,
-.vs-active.wood-table .animateimage.tab2 p {
-  padding-left: 20vw;
-  padding-right: 42vw;
-  text-align: left;
-}
-
-.vs-active.wood-table .animateimage.tab2 h2:first-of-type {
-  padding-top: 10vw;
-  color: var(--neutral-color);
-}
-
-.vs-active.wood-table .animateimage.tab2 p {
-  font-size: var(--heading-font-size-s);
-}
-
 .vs-active .icon-list p.animate:first-of-type {
   animation-name: fade-in-top;
   animation-duration: 1s;
