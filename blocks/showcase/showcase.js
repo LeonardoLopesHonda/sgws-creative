@@ -1,5 +1,5 @@
 import { decorateIcons } from '../../scripts/lib-franklin.js';
-import { createTag } from '../../scripts/scripts.js';
+import { createTag, animationObserver } from '../../scripts/scripts.js';
 
 export default function decorate(showcaseBlock) {
   const imageColumn = showcaseBlock.removeChild(showcaseBlock.children[0]);
@@ -68,4 +68,7 @@ export default function decorate(showcaseBlock) {
 
   showcaseBlock.append(columns);
   decorateIcons(columns);
+  showcaseBlock.querySelectorAll('.icon-plus').forEach((element) => {
+    animationObserver.observe(element);
+  });
 }
