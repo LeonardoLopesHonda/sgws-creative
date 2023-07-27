@@ -12,7 +12,7 @@
 
 .comparison-wrapper {
   flex-grow: 1;
-  max-height: calc(39.5vw);
+  max-height: 39.5vw;
   z-index: 20;
   margin-bottom: 1rem;
   display: flex;
@@ -43,32 +43,32 @@
   animation: fade-in-bottom 0.75s ease-in;
 }
 
-.comparison.bottles.block>div:nth-child(1) {
+.comparison.bottles.block > div:nth-child(1) {
   display: flex;
   flex-direction: row-reverse;
 }
 
-.comparison.bottles.block>div:nth-child(2) {
+.comparison.bottles.block > div:nth-child(2) {
   display: flex;
   flex-direction: row;
   z-index: -1;
-  margin-left: calc(-2.75vw);
+  margin-left: -2.75vw;
   padding-right: 5%;
   transform: scale(0.9);
 }
 
-.comparison.size.block>div>div:nth-child(2n) {
+.comparison.size.block > div > div:nth-child(2n) {
   margin-top: 10px;
 }
 
 .comparison.size.block > div > div:last-child {
   color: var(--neutral-color);
   font-weight: 500;
-  font-size: var(--heading-font-size-m);
+  font-size: clamp(calc(var(--heading-font-size-l) * 0.5), 1.949vw + 0.621rem, var(--heading-font-size-xl));
 }
 
 .comparison.size.block img {
-  max-height: 43vw;
+  max-height: 35vw;
   filter: drop-shadow(0 5px 2px dimgray);
 }
 
@@ -80,20 +80,20 @@
   filter: drop-shadow(0 3px 2px dimgray);
 }
 
-.comparison.bottles.block>div:nth-child(1) .picture {
+.comparison.bottles.block > div:nth-child(1) .picture {
   padding-top: 4vw;
 }
 
-.comparison.bottles.block>div:nth-child(2) .picture {
+.comparison.bottles.block > div:nth-child(2) .picture {
   padding-top: 5.5vw;
 }
 
-.comparison.bottles.block>div:nth-child(2)>div:not(.picture),
-.comparison.bottles.block>div:nth-child(1)>div:not(.picture) {
+.comparison.bottles.block > div:nth-child(2) > div:not(.picture),
+.comparison.bottles.block > div:nth-child(1) > div:not(.picture) {
   text-align: center;
 }
 
-.comparison.bottles.block>div:nth-child(2)>div>picture {
+.comparison.bottles.block > div:nth-child(2) > div > picture {
   filter: grayscale(90%);
 }
 

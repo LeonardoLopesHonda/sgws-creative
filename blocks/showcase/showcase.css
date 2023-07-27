@@ -49,6 +49,13 @@
   color: var(--primary-color);
 }
 
+.showcase .icon-plus.animate {
+  animation-delay: 0.25s;
+  animation-duration: 0.2s;
+  animation-fill-mode: both;
+  animation-name: fade-in;
+}
+
 .showcase button span.icon svg {
     min-height: 24px;
     min-width: 24px;

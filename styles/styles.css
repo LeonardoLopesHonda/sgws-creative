@@ -135,14 +135,10 @@ main div.section.images-border .default-content-wrapper h2::after {
 .product .section:not(.quote) .default-content-wrapper h2::after {
   content: '';
   display: block;
-  border-bottom: 3px solid var(--primary-color);
+  border-bottom: 3px solid var(--secondary-text-color-background);
   padding-top: 0.5vw;
   width: 12.5%;
   margin: 1px auto;
-}
-
-.product .section:not(.quote.neutral) .default-content-wrapper h2::after {
-  border-bottom: 3px solid var(--neutral-color);
 }
 
 h3 {

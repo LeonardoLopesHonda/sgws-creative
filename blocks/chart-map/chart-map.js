@@ -158,8 +158,6 @@ function drawMap(block, mapHolder, mapData, theme) {
 
 let echartsLoaded = false;
 export default function decorate(block) {
-  window.hasCharts = true;
-
   const mapData = [];
   [...block.children].forEach((dataItem) => {
     const dataElements = [...dataItem.children];

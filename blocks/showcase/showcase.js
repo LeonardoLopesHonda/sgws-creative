@@ -68,4 +68,21 @@ export default function decorate(showcaseBlock) {
 
   showcaseBlock.append(columns);
   decorateIcons(columns);
+
+  const repeatAnimationObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      const { target, isIntersecting } = entry;
+      if (isIntersecting) {
+        if (!target.classList.contains('animate')) {
+          target.classList.add('animate');
+          target.addEventListener('animationend', () => {
+            target.classList.remove('animate');
+          }, { passive: true, once: true });
+        }
+      }
+    }, { threshold: 0.1 });
+  });
+  showcaseBlock.querySelectorAll('.icon-plus').forEach((element) => {
+    repeatAnimationObserver.observe(element);
+  });
 }
