@@ -1,5 +1,5 @@
 import { decorateIcons } from '../../scripts/lib-franklin.js';
-import { createTag, animationObserver } from '../../scripts/scripts.js';
+import { createTag } from '../../scripts/scripts.js';
 
 export default function decorate(showcaseBlock) {
   const imageColumn = showcaseBlock.removeChild(showcaseBlock.children[0]);
@@ -68,7 +68,21 @@ export default function decorate(showcaseBlock) {
 
   showcaseBlock.append(columns);
   decorateIcons(columns);
+
+  const repeatAnimationObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      const { target, isIntersecting } = entry;
+      if (isIntersecting) {
+        if (!target.classList.contains('animate')) {
+          target.classList.add('animate');
+          target.addEventListener('animationend', () => {
+            target.classList.remove('animate');
+          }, { passive: true, once: true });
+        }
+      }
+    }, { threshold: 0.1 });
+  });
   showcaseBlock.querySelectorAll('.icon-plus').forEach((element) => {
-    animationObserver.observe(element);
+    repeatAnimationObserver.observe(element);
   });
 }
